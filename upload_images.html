@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha512-c8AIFmn4e0WZnaTOCXTOLzR+uIrTELY9AeIuUq6ODGaO619BjqG2rhiv/y6dIdmM7ba+CpzMRkkztMPXfVBm9g=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.6/min/dropzone.min.css"
+          integrity="sha512-WvVX1YO12zmsvTpUQV8s7ZU98DnkaAokcciMZJfnNWyNzm7//QRV61t4aEr0WdIa4pe854QHLTV302vH92FSMw=="
+          crossorigin="anonymous"/>
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+        }
+
+        .dropzone {
+            min-height: auto;
+        }
+
+        .media__list img {
+            width: 150px;
+            height: 150px !important;
+            object-fit: contain;
+            margin: 0 10px 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="media__container mt-4 mb-4">
+        <h3 class="text-center">Group Objects By Faces</h3>
+
+        <div class="dropzone">
+            <div class="dz-message">Add files here to upload</div>
+        </div>
+
+        <div class="text-center mt-3">
+            <button class="btn btn-primary dropzone-submit">Group</button>
+            <button class="btn btn-danger dropzone-clear">Clear</button>
+        </div>
+    </div>
+
+    <div class="media__result"></div>
+</div>
+
+
+<!-- Add dropzone js link -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+        integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+        integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg=="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.6/min/dropzone.min.js"
+        integrity="sha512-KgeSi6qqjyihUcmxFn9Cwf8dehAB8FFZyl+2ijFEPyWu4ZM8ZOQ80c2so59rIdkkgsVsuTnlffjfgkiwDThewQ=="
+        crossorigin="anonymous"></script>
+<script>
+    if (typeof Dropzone !== 'undefined') {
+        Dropzone.autoDiscover = false;
+    }
+
+    function initDropzone() {
+        const dropzone = new Dropzone('.dropzone', {
+            url: 'http://14.241.120.239:8001/clover/v1.0/api/identities/group_image?',
+<!--            url: 'http://localhost:11033/api/identities/group_image?',-->
+            paramName: 'files',
+            uploadMultiple: true,
+            parallelUploads: 20,
+            autoProcessQueue: false,
+            addRemoveLinks: true,
+            maxFilesize: 9000,
+            timeout: 360000,
+            init: function () {
+                this.on('success', function (res) {
+                    res = JSON.parse(res.xhr.response);
+
+                    const html = res.data.map((group, index) => {
+                        return `
+                            <div class="media__group">
+                                <h4>Group ${index + 1}</h4>
+                                <div class="media__list">
+                                    ${group.map((link) => `<img src="${link}" class="img-thumbnail" alt="...">`).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                    $('.media__result').html(html);
+                });
+            },
+        });
+
+        $('.dropzone-submit').click(function (e) {
+            e.preventDefault();
+            dropzone.processQueue();
+        });
+
+        $('.dropzone-clear').click(function (e) {
+            e.preventDefault();
+            dropzone.removeAllFiles();
+        });
+    }
+
+    initDropzone();
+</script>
+</body>
+</html>
