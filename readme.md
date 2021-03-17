@@ -42,3 +42,6 @@ With the MongoDB shell, you can now create a database, add collections or manage
 # Basic using moongo
 
 https://docs.mongoengine.org/guide/connecting.html
+
+
+mongodb://root:example@14.241.120.239:11038/facial_recognition?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
