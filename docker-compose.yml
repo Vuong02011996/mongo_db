@@ -1,13 +1,14 @@
-version: '3.1'
+version: '3'
 
 services:
-
-  mongo:
-    image: mongo
-    restart: always
-    container_name: mongodb
+  mongodb:
+    image: 'mongo:latest'
     environment:
-      MONGO_INITDB_ROOT_USERNAME: vuong
-      MONGO_INITDB_ROOT_PASSWORD: 02011996
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 11038:27017
+    restart: always
     volumes:
-      - /home/vuong/mongodata:/data/db
+      - /home/vuong/Desktop/Data/mongodb:/data/db
+

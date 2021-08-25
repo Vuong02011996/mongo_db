@@ -73,3 +73,8 @@ With the MongoDB shell, you can now create a database, add collections or manage
 + Reference in [here](https://github.com/parisnakitakejser/video-tutorial-python-code/tree/master/mongoengine)
 
 https://docs.mongoengine.org/guide/connecting.html
+
+# Error
++ pymongo.errors.OperationFailure: Authentication failed.
+  * check your path mongodb in volumes docker compose.
+
