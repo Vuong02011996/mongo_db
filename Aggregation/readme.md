@@ -106,7 +106,7 @@ are limited to 16MB
       ]
       ```
      
-  8. $addFields
+  8. _**$addFields**_
      1. It is possible that you need to make some changes to your output in the way of new fields
      2. Example
      ```python
@@ -116,7 +116,7 @@ are limited to 16MB
          ]
      ```
   
-  9. $count
+  9. **_$count_**
      1. The $count() stage provides an easy way to check the number of documents obtained in the output of the previous stages of the pipeline
      2. Example
      ```python
@@ -125,7 +125,7 @@ are limited to 16MB
              {"$count": 'total_documents'}
          ]
      ```
-  10. $lookup
+  10. _**$lookup**_
       1. Using the $lookup(), here is an aggregate query that merges fields from two collections.
       2. Example:
       ```python
@@ -143,7 +143,7 @@ are limited to 16MB
          ]
       ```
   
-  11. $sortByCount
+  11. _**$sortByCount**_
       1. This stage is a shortcut for grouping, counting and then sorting in descending order the number of different values in a field
       2. Example:
       ```python
