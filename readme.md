@@ -14,9 +14,6 @@
     sudo docker logs mongodb
     ```
 
-
-
-
 ## With docker-compose
 *Remember that installing it this way is recommended for servers and production systems and not so much for development.*
 
@@ -41,20 +38,7 @@
         volumes:
           - /workspace/services/databases/mongodb:/data/db
     ```
-+ Run command: *sudo docker-compose up -d*   
-
-## Start Interactive Docker Terminal (Bash Shell) to Manage MongoDB Database
-
-sudo docker exec -it mongodb bash
-```commandline
-The MongoDB shell launches and the prompt is ready to accept your commands.
-```
-
-mongo -host localhost -port 27017 
-
-```commandline
-With the MongoDB shell, you can now create a database, add collections or manage individual documents.
-```
++ Run command: *sudo docker-compose up -d*
 
 
 # Install MongoDB Enterprise Edition on Ubuntu(GUI mongodb)
@@ -68,11 +52,19 @@ With the MongoDB shell, you can now create a database, add collections or manage
   
 + Install : sudo snap install robo3t-snap
 
-# Basic using mongo
+# Basic using mongo with python.
++ In python can use pymongo or mongoengine.
++ Some benchmarking compare pymongo and mongoengine:
+  + [Q Tai](https://docs.google.com/document/d/1h61YLduQt4_tvU9MGXbOp4tth5TBOizd2iR57F8N7pg/edit)
+  + [stackoverflow](https://stackoverflow.com/questions/35257305/mongoengine-is-very-slow-on-large-documents-compared-to-native-pymongo-usage)
+  + 
 
-+ Reference in [here](https://github.com/parisnakitakejser/video-tutorial-python-code/tree/master/mongoengine)
++ Reference 
+  + [mongodb](https://docs.mongodb.com/manual/crud/)
+  + [pymongo](https://pymongo.readthedocs.io/en/stable/tutorial.html) 
+  + [mongoengine](https://docs.mongoengine.org/guide/defining-documents.html)
+  + [video-tutorial-mongoengine](https://github.com/parisnakitakejser/video-tutorial-python-code/tree/master/mongoengine)
 
-https://docs.mongoengine.org/guide/connecting.html
 
 # Error
 + pymongo.errors.OperationFailure: Authentication failed.

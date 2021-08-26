@@ -1,6 +1,4 @@
 # Mongo engine basic
-+ [Reference-mongoengine.org](https://docs.mongoengine.org/guide/document-instances.html#saving-and-deleting-documents)
-+ [Reference](https://github.com/parisnakitakejser/video-tutorial-python-code/tree/master/mongoengine)
 
 1. Connect
    The data basename can exit or not exit.
@@ -44,7 +42,9 @@
 8. Update the embedded documents.
    
    
-# Field
+## Field
 + EmbeddedDocumentField - Only valid values are subclasses of EmbeddedDocument
   
-      
+# Reference
++ [Reference-mongoengine.org](https://docs.mongoengine.org/guide/document-instances.html#saving-and-deleting-documents)
++ [Reference](https://github.com/parisnakitakejser/video-tutorial-python-code/tree/master/mongoengine)
