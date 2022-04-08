@@ -36,13 +36,13 @@
           - 11038:27017
         restart: always
         volumes:
-          - /workspace/services/databases/mongodb:/data/db
+          - /home/vuong/Desktop/services/mongoDB/mongodb:/data/db
     ```
 + Run command: *sudo docker-compose up -d*
 
 
 # Install MongoDB Enterprise Edition on Ubuntu(GUI mongodb)
-+ Reference in [here](https://retool.com/blog/the-best-mongodb-guis-in-2020/)
++ Reference in [the-best-mongodb-guis-in-2020](https://retool.com/blog/the-best-mongodb-guis-in-2020/)
 + Can use : Mongo Compass, Robo 3T, ...
 
 **Compass**
@@ -53,12 +53,14 @@
 + Install : sudo snap install robo3t-snap
 
 # Basic using mongo with python.
-+ In python can use pymongo or mongoengine.
++ ORM
+  + Object-Relational Mapping (ORM) is a technique that lets you query and manipulate data from a database using an object-oriented paradigm.
+  + [ORM of mongoDB](https://pymongo.readthedocs.io/en/stable/tools.html#orm-like-layers)
+  + [orm-mongoengine](https://github.com/mongoengine/mongoengine)
++ In python you can use pymongo or mongoengine.
 + Some benchmarking compare pymongo and mongoengine:
   + [Q Tai](https://docs.google.com/document/d/1h61YLduQt4_tvU9MGXbOp4tth5TBOizd2iR57F8N7pg/edit)
   + [stackoverflow](https://stackoverflow.com/questions/35257305/mongoengine-is-very-slow-on-large-documents-compared-to-native-pymongo-usage)
-  + 
-
 + Reference 
   + [mongodb](https://docs.mongodb.com/manual/crud/)
   + [pymongo](https://pymongo.readthedocs.io/en/stable/tutorial.html) 
